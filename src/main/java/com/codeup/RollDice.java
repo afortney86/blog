@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.Random;
+
 @Controller
 class RollDice {
 
@@ -18,6 +20,10 @@ class RollDice {
     @GetMapping ("/roll-dice/{userGuess}")
     public String userGuess(@PathVariable int userGuess, Model model) {
         model.addAttribute("userGuess", userGuess);
+
+        Random rand = new Random();
+        int random = rand.nextInt(6) + 1;
+        model.addAttribute("random", random);
         return "roll-dice";
 
     }
