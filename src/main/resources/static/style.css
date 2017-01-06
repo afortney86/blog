@@ -1,0 +1,23 @@
+body{
+    margin: 0px;
+    padding: 0px;
+}
+
+textarea {
+    height: 500px;
+    resize: none;
+}
+
+#createheader{
+    width: 50%;
+    margin: 0 auto;
+
+}
+
+#createform {
+    width: 50%;
+    height: 50%;
+
+
+    margin: 0 auto;
+}
