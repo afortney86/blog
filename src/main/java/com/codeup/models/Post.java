@@ -1,6 +1,9 @@
-package com.codeup;
+package com.codeup.models;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 
@@ -8,11 +11,14 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
+    @NotBlank(message = "error message")
+    @Size(min = 3, message = "error message")
     @Column(nullable = false, unique = true)
     private String title;
 
+    @NotBlank(message = "error message")
     @Column(nullable = false, unique = true)
     private String body;
 
@@ -26,11 +32,11 @@ public class Post {
     }
 
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="fragments/header :: header('Post Details')">
 </head>
 <body>
+    <div class="container">
+        <h3 th:text="${post.title}"></h3>
+        <p th:text="${post.body}"></p>
 
+        <button type="button" class="btn btn-primary">Edit</button>
+
+        <button type="button" class="btn btn-danger">Delete</button>
+    </div>
 </body>
 </html>

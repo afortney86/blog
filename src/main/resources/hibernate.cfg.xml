@@ -27,7 +27,7 @@
         <property name="hbm2ddl.auto">update</property>
 
         <!-- Add mapped classes here -->
-        <mapping class="com.codeup.Post"/>
+        <mapping class="com.codeup.models.Post"/>
         <!-- ... -->
     </session-factory>
 </hibernate-configuration>
