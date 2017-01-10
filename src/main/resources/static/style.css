@@ -3,10 +3,7 @@ body{
     padding: 0px;
 }
 
-textarea {
-    height: 500px;
-    resize: none;
-}
+/*For the Create/edit html*/
 
 #createheader{
     width: 50%;
@@ -17,7 +14,24 @@ textarea {
 #createform {
     width: 50%;
     height: 50%;
-
-
     margin: 0 auto;
+}
+
+textarea {
+    min-height: 300px;
+    resize: none;
+}
+
+/*Universal footer*/
+
+#footer{
+    color: white;
+    background-color: black;
+    min-height: 10%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    text-align: center;
 }

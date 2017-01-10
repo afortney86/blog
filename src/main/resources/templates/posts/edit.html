@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.tymeleaf.org">
 <head th:replace="fragments/header :: header('Create a Post')">
+    <link rel="stylesheet" href="../../static/style.css"/>
 </head>
 <body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
 <div class="container">
     <h1 id="createheader">Edit your post!</h1>
     <form id="createform" th:action="@{'/posts/' + *{id} + '/edit'}" th:method="POST" th:object="${post}" >
@@ -11,10 +13,12 @@
             <label>Title:</label>
             <input class="form-control" th:field="*{title}" />
             <br />
+            <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>
 
             <label>Body:</label>
             <textarea class="form-control" th:field="*{body}"></textarea>
             <br />
+            <p th:if="${#fields.hasErrors('body')}" th:errors="*{body}"></p>
 
             <input class="btn btn-info" type="submit" value="Save Changes!" />
         </div>

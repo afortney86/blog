@@ -6,20 +6,20 @@ import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
-
+@Table(name="posts")
 public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @NotBlank(message = "error message")
-    @Size(min = 3, message = "error message")
-    @Column(nullable = false, unique = true)
+    @NotBlank(message = "Title cannot be empty.")
+    @Size(min = 3, message = "Must have a minimum of three characters.")
+    @Column(nullable = false)
     private String title;
 
-    @NotBlank(message = "error message")
-    @Column(nullable = false, unique = true)
+    @NotBlank(message = "Body cannot be empty")
+    @Column(nullable = false)
     private String body;
 
     public Post(String title, String body) {
