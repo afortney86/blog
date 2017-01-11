@@ -1,15 +1,15 @@
 package com.codeup.controllers;
 
-import com.codeup.Dao.DaoFactory;
-import com.codeup.Dao.Posts;
+
+import com.codeup.Interfaces.Posts;
 import com.codeup.models.Post;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 /**
  * Created by anthonyfortney on 1/5/17.
@@ -18,10 +18,13 @@ import java.util.List;
 @RequestMapping("/posts")
 public class PostsController {
 
+    @Autowired
+    Posts posts;
+
     @GetMapping
     public String index(Model m) {
 //        List posts = DaoFactory.getPostsDao().all();
-        m.addAttribute("posts", DaoFactory.getPostsDao().all());
+        m.addAttribute("posts", posts.findAll());
         return "posts/index";
     }
 
@@ -41,19 +44,19 @@ public class PostsController {
             return "posts/create";
 
         }
-        DaoFactory.getPostsDao().savePost(postCreated);
+        posts.save(postCreated);
         return "redirect:/posts";
     }
 
     @GetMapping("/{id}")
     public String showPost(@PathVariable long id, Model m){
-        m.addAttribute("post", DaoFactory.getPostsDao().findPostById(id));
+        m.addAttribute("post", posts.findOne(id));
         return "posts/show";
     }
 
     @GetMapping("/{id}/edit")
     public String editPostForm(@PathVariable long id, Model m){
-        m.addAttribute("post", DaoFactory.getPostsDao().findPostById(id));
+        m.addAttribute("post", posts.findOne(id));
         return "posts/edit";
     }
 
@@ -66,20 +69,22 @@ public class PostsController {
             return "posts/edit";
         }
 
-        Post existingPost = DaoFactory.getPostsDao().findPostById(editedPost.getId());
+        Post existingPost = posts.findOne(editedPost.getId());
         String newTitle = editedPost.getTitle();
         String newBody = editedPost.getBody();
 
         existingPost.setTitle(newTitle);
         existingPost.setBody(newBody);
 
-        DaoFactory.getPostsDao().updatePost(existingPost);
+        posts.save(existingPost);
         return "redirect:/posts/" + existingPost.getId();
     }
 
     @GetMapping("/{id}/delete")
     public String deletePost(@PathVariable long id){
-        DaoFactory.getPostsDao().deletePosts(id);
+        posts.delete(id);
         return "redirect:/posts";
+
+
     }
 }
