@@ -42,7 +42,6 @@ public class PostsController {
             m.addAttribute("errors", validation);
             m.addAttribute("post", postCreated);
             return "posts/create";
-
         }
         posts.save(postCreated);
         return "redirect:/posts";

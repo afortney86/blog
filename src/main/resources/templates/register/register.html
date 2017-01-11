@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.tymeleaf.org">
+<head th:replace="fragments/header :: header('Register')">
+    <link rel="stylesheet" href="../../static/style.css"/>
+</head>
+<body>
+<nav th:replace="fragments/navbar :: navbar"></nav>
+<div class="container">
+
+    <h1 id="createheader">Register</h1>
+
+    <form id="createform" th:action="@{/register}" method="POST" th:object="${user}" >
+        <div class="form-group">
+
+            <label>Username:</label>
+            <input class="form-control" th:field="*{username}" />
+            <br />
+            <!--<p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>-->
+
+            <label>Email Address:</label>
+            <input class="form-control" th:field="*{email}" />
+            <br />
+            <!--<p th:if="${#fields.hasErrors('body')}" th:errors="*{body}"></p>-->
+
+            <label>Password:</label>
+            <input class="form-control" th:field="*{password}" type="password" />
+            <br />
+            <!--<p th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></p>-->
+
+            <input class="btn btn-info" type="submit" value="Register" />
+        </div>
+    </form>
+</div>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

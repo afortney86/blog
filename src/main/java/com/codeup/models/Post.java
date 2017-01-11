@@ -35,15 +35,14 @@ public class Post {
     @Column(name = "modify_date")
     private Date modifyDate;
 
-    public Post(String title, String body) {
-        this.title = title;
-        this.body = body;
-    }
-
     public Post(){
 
     }
 
+    public Post(String title, String body) {
+        this.title = title;
+        this.body = body;
+    }
 
     public long getId() {
         return id;
@@ -69,4 +68,19 @@ public class Post {
         this.body = body;
     }
 
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getModifyDate() {
+        return modifyDate;
+    }
+
+    public void setModifyDate(Date modifyDate) {
+        this.modifyDate = modifyDate;
+    }
 }

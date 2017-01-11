@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by anthonyfortney on 1/5/17.
  */
-public interface Posts extends CrudRepository<Post, Long>{
+public interface Posts extends CrudRepository<Post, Long> {
 
 
 
