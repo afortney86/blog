@@ -16,7 +16,7 @@ import javax.validation.Valid;
  */
 @Controller
 @RequestMapping("/posts")
-public class PostsController {
+public class PostsController extends BaseController{
 
     @Autowired
     Posts posts;
@@ -30,6 +30,7 @@ public class PostsController {
 
     @GetMapping("/create")
     public String showCreatePost(Model m) {
+
         m.addAttribute("post", new Post());
         return "posts/create";
     }
