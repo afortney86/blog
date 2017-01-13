@@ -23,14 +23,12 @@ public class PostsController extends BaseController{
 
     @GetMapping
     public String index(Model m) {
-//        List posts = DaoFactory.getPostsDao().all();
         m.addAttribute("posts", posts.findAll());
         return "posts/index";
     }
 
     @GetMapping("/create")
     public String showCreatePost(Model m) {
-
         m.addAttribute("post", new Post());
         return "posts/create";
     }

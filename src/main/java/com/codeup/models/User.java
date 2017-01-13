@@ -1,8 +1,11 @@
 package com.codeup.models;
 
+import com.codeup.Dao.SecurityConfiguration;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.*;
+import java.util.Collections;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -22,6 +25,9 @@ public class User {
     @NotBlank
     @Column(nullable = false)
     private String password;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Post> posts;
 
 
     public User(User user) {
@@ -62,7 +68,18 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        SecurityConfiguration sc = new SecurityConfiguration();
+        this.password = sc.passwordEncoder().encode(password);
+    }
+
+    public List<Post> getPosts() {
+        Collections.reverse(posts);
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 }
+
 

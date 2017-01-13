@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.tymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/header :: header('Create a Post')">
     <link rel="stylesheet" href="../../static/style.css"/>
 </head>
@@ -9,7 +9,7 @@
 
         <h1 id="createheader">Write about your day!</h1>
 
-        <form id="createform" action="/posts/create" method="POST" th:object="${post}" >
+        <form id="createform" th:action="@{/posts/create}" method="POST" th:object="${post}" >
             <div class="form-group">
 
                 <label>Title:</label>
